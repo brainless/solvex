@@ -17,6 +17,7 @@ function App() {
     <Fragment>
       <Router>
         <Navbar />
+        <div className="block clear-both" style={{ paddingBottom: "57px" }} />
 
         <Switch>
           <Route path="/search">
