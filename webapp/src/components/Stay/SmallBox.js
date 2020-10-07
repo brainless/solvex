@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Hx } from "components/LayoutHelpers";
 
@@ -45,7 +46,9 @@ export default ({ stay }) => {
   return (
     <div>
       <div className="rounded border bg-white px-3 py-2">
-        <Hx size="5">{stay.name}</Hx>
+        <Hx size="5">
+          <Link to={`/stay/${stay.id}`}>{stay.name}</Link>
+        </Hx>
 
         <div className="flex flex-row mt-2">
           <span>
