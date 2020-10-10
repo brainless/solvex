@@ -44,6 +44,7 @@ export const Hx = ({ size = "3", children }) => {
 
 export const Button = ({
   label,
+  fullWidth = false,
   size = "md",
   theme = "primary",
   active = false,
@@ -55,9 +56,16 @@ export const Button = ({
   children,
 }) => {
   let classes = `inline-block text-sm font-semibold leading-loose shadow hover:shadow-sm focus:outline-none ${rounded} ${padding} ${margin}`;
+  if (fullWidth) {
+    classes = classes + " w-full";
+  }
   if (theme === "primary") {
     classes =
       classes + " bg-blue-400 text-gray-800 hover:bg-blue-700 hover:text-white";
+  } else if (theme === "success") {
+    classes =
+      classes +
+      " bg-green-400 text-gray-700 hover:bg-green-700 hover:text-white";
   } else if (theme === "secondary") {
     classes =
       classes + " bg-gray-300 text-gray-700 hover:bg-gray-700 hover:text-white";

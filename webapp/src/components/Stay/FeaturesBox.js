@@ -10,9 +10,7 @@ const features = {
 export default () => {
   return (
     <Fragment>
-      <Section>
-        <Hx size="3">Facilities</Hx>
-      </Section>
+      <Hx size="3">Facilities</Hx>
     </Fragment>
   );
 };

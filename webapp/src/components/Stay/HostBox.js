@@ -17,17 +17,12 @@ const host = {
 export default () => {
   return (
     <Fragment>
-      <Section>
-        <Hx size="3">
-          {host.first_name} {host.last_name}
-        </Hx>
-        <img
-          class="my-4 h-16 w-16 rounded-full mx-auto"
-          src={host.img_src}
-        ></img>
+      <Hx size="3">
+        {host.first_name} {host.last_name}
+      </Hx>
+      <img class="my-4 h-16 w-16 rounded-full mx-auto" src={host.img_src}></img>
 
-        <p className="text-sm">{host.introduction}</p>
-      </Section>
+      <p className="text-sm">{host.introduction}</p>
     </Fragment>
   );
 };
