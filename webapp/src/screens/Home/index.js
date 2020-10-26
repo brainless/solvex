@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Section, Hx } from "components/LayoutHelpers";
 import SmallBox from "components/Stay/SmallBox";
+import SearchBox from "components/Search";
 
 const sampleStays = [
   {
@@ -54,9 +55,9 @@ const sampleStays = [
 const LatestStays = () => {
   return (
     <Section>
-      <Hx size="1">Our latest stays</Hx>
+      <Hx size="2">Our latest stays</Hx>
 
-      <div className="grid grid-cols-3 gap-3 mt-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
         {sampleStays.map((stay, i) => (
           <SmallBox key={`hm-lt-st-${i}`} stay={stay} />
         ))}
@@ -66,5 +67,20 @@ const LatestStays = () => {
 };
 
 export default () => {
-  return <LatestStays />;
+  return (
+    <Fragment>
+      <div className="flex flex-col" style={{ height: "calc(100vh / 2)" }}>
+        <div className="flex-grow" />
+        <div className="max-w-screen-xl mx-auto">
+          <Hx size="1" isCentered>
+            Book an amazing getaway
+          </Hx>
+          <SearchBox />
+        </div>
+        <div className="flex-grow" />
+      </div>
+
+      <LatestStays />
+    </Fragment>
+  );
 };

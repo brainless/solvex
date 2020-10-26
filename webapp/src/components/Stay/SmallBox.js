@@ -45,24 +45,30 @@ const Features = ({ features }) => {
 export default ({ stay }) => {
   return (
     <div>
-      <div className="rounded border bg-white px-3 py-2">
-        <Hx size="5">
-          <Link to={`/stay/${stay.id}`}>{stay.name}</Link>
-        </Hx>
+      <div className="rounded border bg-white">
+        <div className="relative bg-blue-200 w-full h-64">
+          <div className="absolute w-full bottom-0 pt-16 px-2 bg-gradient-to-b from-transparent to-gray-500">
+            <div className="flex flex-row mt-2">
+              <span>
+                <StayType stayType={stay.stayType} />
+              </span>
 
-        <div className="flex flex-row mt-2">
-          <span>
-            <StayType stayType={stay.stayType} />
-          </span>
-          <span className="flex-1 text-right py-1 font-medium text-gray-700">
-            <span className="text-gray-500">US$</span> {stay.ratePerNight}
-          </span>
+              <span className="flex-1 text-right py-1 font-semibold text-white">
+                <span className="text-gray-200 font-normal">US$</span>{" "}
+                {stay.ratePerNight}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="bg-blue-200 w-full h-64"></div>
+        <div className="p-2">
+          <Hx size="5">
+            <Link to={`/stay/${stay.id}`}>{stay.name}</Link>
+          </Hx>
 
-        <div className="mt-2 space-x-1 space-y-1">
-          <Features features={stay.features} />
+          <div className="mt-2 space-x-1 space-y-1">
+            <Features features={stay.features} />
+          </div>
         </div>
       </div>
     </div>

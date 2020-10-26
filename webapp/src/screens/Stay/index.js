@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 
 import { Section, Hx } from "components/LayoutHelpers";
-import HostBox from "./HostBox";
-import FeaturesBox from "./FeaturesBox";
-import Carousel from "./Carousel";
-import PriceBook from "./PriceBook";
+import HostBox from "components/Stay/HostBox";
+import FeaturesBox from "components/Stay/FeaturesBox";
+import Carousel from "components/Stay/Carousel";
+import PriceBook from "components/Stay/PriceBook";
 
 const stay = {
   id: 82627,
@@ -19,12 +19,13 @@ const stay = {
 export default () => {
   return (
     <Fragment>
+      <Carousel />
+
       <Section>
         <Hx size="1">{stay.name}</Hx>
 
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <div className="col-span-3">
-            <Carousel />
             <FeaturesBox />
           </div>
 

@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "components/Navbar";
 import Search from "components/Search"; // Find a place to stay
-import Stay from "components/Stay"; // Actual rooms/houses
+import Stay from "screens/Stay"; // Actual rooms/houses
 import Book from "components/Book"; // This is the checkout process like in eCommerce
-import Booking from "components/Booking"; // My bookings
-import About from "components/About";
-import Home from "components/Home";
+import Booking from "screens/Booking"; // My bookings
+import About from "screens/About";
+import Home from "screens/Home";
 
 function App() {
   // React <Fragment> - https://reactjs.org/docs/fragments.html

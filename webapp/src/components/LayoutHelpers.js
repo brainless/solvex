@@ -2,7 +2,7 @@ import React from "react";
 
 export const Section = ({
   size = "md",
-  maxWidth = "max-w-screen-lg",
+  maxWidth = "max-w-screen-xl",
   children,
 }) => {
   // The size controls the padding
@@ -23,20 +23,17 @@ export const Section = ({
   );
 };
 
-export const Hx = ({ size = "3", children }) => {
+export const Hx = ({ size = "3", isCentered, children }) => {
   const sizeClass = {
-    1: "text-4xl",
-    2: "text-3xl",
-    3: "text-2xl",
-    4: "text-xl",
-    5: "text-lg",
-    6: "text-md",
+    1: "text-4xl font-semibold text-gray-700",
+    2: "text-3xl font-semibold text-gray-700",
+    3: "text-xl font-bold text-gray-700",
   };
 
   return React.createElement(
     `h${size}`,
     {
-      className: `font-medium text-gray-700 ${sizeClass[size]}`,
+      className: `${sizeClass[size]} ${isCentered ? "text-center" : ""}`,
     },
     children
   );
