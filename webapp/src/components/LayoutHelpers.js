@@ -1,28 +1,5 @@
 import React from "react";
 
-export const Section = ({
-  size = "md",
-  maxWidth = "max-w-screen-xl",
-  children,
-}) => {
-  // The size controls the padding
-  const sizeClass = {
-    xs: "p-4",
-    sm: "p-5",
-    md: "p-6",
-    "": "p-6",
-    lg: "p-8",
-    xl: "p-10",
-    "2xl": "p-12",
-  };
-
-  return (
-    <section>
-      <div className={`${maxWidth} ${sizeClass[size]} m-auto`}>{children}</div>
-    </section>
-  );
-};
-
 export const Hx = ({ size = "3", isCentered, children }) => {
   const sizeClass = {
     1: "text-4xl font-semibold text-gray-700",

@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 
-import { Section, Hx } from "components/LayoutHelpers";
+import { Hx } from "components/LayoutHelpers";
+import {
+  maxSectionWidth,
+  sectionPadding,
+  sectionMargin,
+} from "components/styleDefaults";
 import SmallBox from "components/Stay/SmallBox";
 import SearchBox from "components/Search";
 
@@ -54,7 +59,7 @@ const sampleStays = [
 
 const LatestStays = () => {
   return (
-    <Section>
+    <Fragment>
       <Hx size="2">Our latest stays</Hx>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
@@ -62,7 +67,21 @@ const LatestStays = () => {
           <SmallBox key={`hm-lt-st-${i}`} stay={stay} />
         ))}
       </div>
-    </Section>
+    </Fragment>
+  );
+};
+
+const WeekDiscount = () => {
+  return (
+    <Fragment>
+      <Hx size="2">Discount on week stay</Hx>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
+        {sampleStays.slice(0, 3).map((stay, i) => (
+          <SmallBox key={`hm-lt-st-${i}`} stay={stay} />
+        ))}
+      </div>
+    </Fragment>
   );
 };
 
@@ -80,7 +99,17 @@ export default () => {
         <div className="flex-grow" />
       </div>
 
-      <LatestStays />
+      <div
+        className={`${maxSectionWidth} mx-auto ${sectionPadding} ${sectionMargin}`}
+      >
+        <LatestStays />
+      </div>
+
+      <div
+        className={`${maxSectionWidth} mx-auto ${sectionPadding} ${sectionMargin}`}
+      >
+        <WeekDiscount />
+      </div>
     </Fragment>
   );
 };

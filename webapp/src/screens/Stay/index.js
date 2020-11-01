@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 
-import { Section, Hx } from "components/LayoutHelpers";
+import { Hx } from "components/LayoutHelpers";
+import {
+  maxSectionWidth,
+  sectionPadding,
+  sectionMargin,
+} from "components/styleDefaults";
 import HostBox from "components/Stay/HostBox";
 import FeaturesBox from "components/Stay/FeaturesBox";
 import Carousel from "components/Stay/Carousel";
@@ -21,21 +26,68 @@ export default () => {
     <Fragment>
       <Carousel />
 
-      <Section>
-        <Hx size="1">{stay.name}</Hx>
+      <div className="w-full bg-white overflow-auto">
+        <div
+          className={`${maxSectionWidth} mx-auto ${sectionPadding} ${sectionMargin}`}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+            <div className="col-span-5">
+              <Hx size="1">{stay.name}</Hx>
 
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="col-span-3">
-            <FeaturesBox />
-          </div>
+              <Hx size="2">Introduction</Hx>
+              <p className="py-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. In
+                mollis nunc sed id semper risus in hendrerit. Dictumst quisque
+                sagittis purus sit.
+                <br />
+                <br />
+                Sapien nec sagittis aliquam malesuada bibendum arcu vitae
+                elementum curabitur. Porta nibh venenatis cras sed felis eget
+                velit aliquet. Sit amet venenatis urna cursus eget nunc
+                scelerisque viverra mauris. Ultricies mi quis hendrerit dolor
+                magna. Aliquet bibendum enim facilisis gravida. Faucibus in
+                ornare quam viverra orci sagittis eu.
+                <br />
+                <br />
+                Phasellus egestas tellus rutrum tellus pellentesque eu
+                tincidunt. Odio ut sem nulla pharetra. Ac tortor vitae purus
+                faucibus ornare. In eu mi bibendum neque egestas.
+              </p>
 
-          <div className="col-span-1 p-2 bg-white border rounded">
-            <HostBox />
-            <div className="mt-12" />
-            <PriceBook />
+              <hr className="border-gray-300 my-8" />
+
+              <Hx size="2">Facilities</Hx>
+              <FeaturesBox />
+
+              <hr className="border-gray-300 my-8" />
+
+              <Hx size="2">Location</Hx>
+              <p className="py-1">
+                Sapien nec sagittis aliquam malesuada bibendum arcu vitae
+                elementum curabitur. Porta nibh venenatis cras sed felis eget
+                velit aliquet. Sit amet venenatis urna cursus eget nunc
+                scelerisque viverra mauris. Ultricies mi quis hendrerit dolor
+                magna. Aliquet bibendum enim facilisis gravida. Faucibus in
+                ornare quam viverra orci sagittis eu.
+              </p>
+
+              <hr className="border-gray-300 my-8" />
+
+              <Hx size="2">Reviews</Hx>
+            </div>
+
+            <div className="col-span-2">
+              <div className="px-4 py-3 bg-white border rounded">
+                <HostBox />
+
+                <hr className="my-8" />
+                <PriceBook />
+              </div>
+            </div>
           </div>
         </div>
-      </Section>
+      </div>
     </Fragment>
   );
 };
