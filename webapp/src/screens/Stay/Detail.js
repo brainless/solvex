@@ -26,10 +26,10 @@ export default () => {
     <Fragment>
       <Carousel />
 
-      <div className="w-full bg-white overflow-auto">
-        <div
-          className={`${maxSectionWidth} mx-auto ${sectionPadding} ${sectionMargin}`}
-        >
+      <div
+        className={`w-full ${sectionPadding} ${sectionMargin} bg-white overflow-auto`}
+      >
+        <div className={`${maxSectionWidth} mx-auto`}>
           <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
             <div className="col-span-5">
               <Hx size="1">{stay.name}</Hx>

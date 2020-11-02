@@ -16,7 +16,7 @@ const sampleStays = [
     roomCount: 3,
     stayType: "whole_house",
     totalHeadCount: 5,
-    features: ["sh_ktch", "wash_mc", "wifi", "telev", "bband"],
+    features: ["ktchn", "wash_mc", "wifi", "ledtv", "bband"],
     ratePerNight: 39,
   },
   {
@@ -25,7 +25,7 @@ const sampleStays = [
     roomCount: 3,
     stayType: "whole_house",
     totalHeadCount: 5,
-    features: ["sh_ktch", "wash_mc", "wifi", "telev", "bband"],
+    features: ["ktchn", "wash_mc", "wifi", "ledtv", "bband"],
     ratePerNight: 39,
   },
   {
@@ -34,7 +34,7 @@ const sampleStays = [
     roomCount: 3,
     stayType: "whole_house",
     totalHeadCount: 5,
-    features: ["sh_ktch", "wash_mc", "wifi", "telev", "bband"],
+    features: ["ktchn", "wash_mc", "wifi", "ledtv", "bband"],
     ratePerNight: 39,
   },
   {
@@ -43,7 +43,7 @@ const sampleStays = [
     roomCount: 3,
     stayType: "whole_house",
     totalHeadCount: 5,
-    features: ["sh_ktch", "wash_mc", "wifi", "telev", "bband"],
+    features: ["ktchn", "wash_mc", "wifi", "ledtv", "bband"],
     ratePerNight: 39,
   },
   {
@@ -52,7 +52,7 @@ const sampleStays = [
     roomCount: 3,
     stayType: "whole_house",
     totalHeadCount: 5,
-    features: ["sh_ktch", "wash_mc", "wifi", "telev", "bband"],
+    features: ["ktchn", "wash_mc", "wifi", "ledtv", "bband"],
     ratePerNight: 39,
   },
 ];

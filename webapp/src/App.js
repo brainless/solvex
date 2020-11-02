@@ -4,10 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Search from "components/Search"; // Find a place to stay
 import Stay from "screens/Stay"; // Actual rooms/houses
-import Book from "components/Book"; // This is the checkout process like in eCommerce
+import Book from "screens/Book"; // This is the checkout process like in eCommerce
 import Booking from "screens/Booking"; // My bookings
 import About from "screens/About";
 import Home from "screens/Home";
+import Account from "screens/Account";
+import Login from "screens/Account/Login";
 
 function App() {
   // React <Fragment> - https://reactjs.org/docs/fragments.html
@@ -23,6 +25,7 @@ function App() {
           <Route path="/search">
             <Search />
           </Route>
+
           <Route path="/stay">
             <Stay />
           </Route>
@@ -30,13 +33,23 @@ function App() {
           <Route path="/book">
             <Book />
           </Route>
-          <Route path="/booking">
-            <Booking />
-          </Route>
 
           <Route path="/about">
             <About />
           </Route>
+
+          <Route path="/account">
+            <Account />
+          </Route>
+
+          <Route path="/login">
+            <Login />
+          </Route>
+
+          <Route path="/booking">
+            <Booking />
+          </Route>
+
           <Route path="/" exact>
             <Home />
           </Route>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Hx } from "components/LayoutHelpers";
+import { featureLabelsEN } from "uiLabels/FeatureLabels";
 
 const StayType = ({ stayType }) => {
   if (stayType === "whole_house") {
@@ -16,25 +17,12 @@ const StayType = ({ stayType }) => {
 const Features = ({ features }) => {
   const featuresArray = [];
   for (const feature of features) {
-    let text = "";
-
-    if (feature === "sh_ktch") {
-      text = "Shared kitchen";
-    } else if (feature === "wash_mc") {
-      text = "Washing machine";
-    } else if (feature === "wifi") {
-      text = "WiFi";
-    } else if (feature === "telev") {
-      text = "Television";
-    } else if (feature === "bband") {
-      text = "Broadband";
-    }
     featuresArray.push(
       <span
         key={`ft-${feature}`}
         className="inline-block text-xs leading-loose font-medium text-gray-600 px-2 bg-gray-200 rounded"
       >
-        {text}
+        {featureLabelsEN[feature]}
       </span>
     );
   }
