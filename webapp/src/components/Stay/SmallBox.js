@@ -63,7 +63,7 @@ export default ({ stay }) => {
 
         <div className="p-2">
           <Hx size="5">
-            <Link to={`/stay/${stay.id}`}>{stay.name}</Link>
+            <Link to={`/stay/${stay.id}/slug-of-stay`}>{stay.name}</Link>
           </Hx>
 
           <div className="mt-2 space-x-1 space-y-1">

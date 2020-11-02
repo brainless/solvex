@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 import { maxSectionWidth, sectionPadding } from "components/styleDefaults";
 
 export default () => {
+  const stayMatch = useRouteMatch({
+    path: "/stay/:stayId/:slug",
+    strict: true,
+  });
+
   return (
     <nav
       className="fixed top-0 w-full bg-white border-b border-gray-300 z-10"
@@ -22,16 +27,27 @@ export default () => {
         <div className="block lg:inline-block lg:mt-0 p-4">&nbsp;</div>
 
         <div className="block lg:inline-block items-center flex-grow">
-          <Link
-            className={`font-medium text-lg text-white bg-green-600 px-4 py-1 rounded`}
-            to="/stay"
-          >
-            Find a stay
-          </Link>
+          <input
+            type="text"
+            className="px-3 leading-7 rounded border border-gray-500 focus:outline-none focus:bg-yellow-100"
+            placeholder="Where are you going?"
+          />
         </div>
 
         <div className="block lg:inline-block items-center">
-          <Link className={`text-lg`} to="/stay">
+          {stayMatch && stayMatch.url && (
+            <Link
+              className="inline-block font-semibold bg-green-400 text-gray-700 px-3 leading-7 rounded mr-4"
+              to="/stay"
+            >
+              Book this stay
+            </Link>
+          )}
+          <Link
+            className="inline-block text-sm bg-gray-300 px-3 leading-7 rounded"
+            to="/account"
+          >
+            <i className="far fa-user pr-1" />
             My account
           </Link>
         </div>
