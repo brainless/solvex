@@ -1,0 +1,75 @@
+---
+- name: Update with Git, update requirements, restart app server
+
+  # Specify the hosts you want to target
+  hosts: appserver
+
+  remote_user: team
+
+  vars:
+    projects_root: /home/team
+    project_repo_url: git@github.com:brainless/solvex.git
+    python_path: /usr/bin/python3
+    project_name: "bnb_solvex"
+    build_folder_owner: team
+    build_folder_group: "www-data"
+
+  tasks:
+    - name: Update project repo
+      git:
+        repo: "{{ project_repo_url }}"
+        accept_hostkey: yes
+        dest: "{{ projects_root }}/{{ project_name }}"
+        version: develop
+
+    - name: Install/update Python requirements for backend
+      pip:
+        requirements: "{{ projects_root }}/{{ project_name }}/backend/requirements.txt"
+        chdir: "{{ projects_root }}/{{ project_name }}/backend"
+        virtualenv: "{{ projects_root }}/{{ project_name }}/backend/.venv"
+        virtualenv_command: "python3 -m virtualenv"
+
+    - name: Run migrations for database
+      command:
+        chdir: "{{ projects_root }}/{{ project_name }}/backend"
+        cmd: "{{ projects_root }}/{{ project_name }}/backend/.venv/bin/python migrations.py upgrade"
+
+    - name: Restart gunicorn server
+      become: yes
+      become_user: root
+      systemd:
+        name: "{{ project_name }}"
+        state: restarted
+
+    - name: Build webapp
+      shell:
+        chdir: "../../../webapp/"
+        cmd: "NODE_ENV=production yarn build"
+      delegate_to: localhost
+
+    - name: Compress webapp
+      community.general.archive:
+        path: "../../../webapp/build/"
+        dest: "../../../webapp.tgz"
+      delegate_to: localhost
+
+    - name: Upload built webapp
+      copy:
+        src: "../../../webapp.tgz"
+        dest: "/var/www/html/"
+        owner: "team"
+        group: "www-data"
+        mode: 0750
+      become: yes
+      become_user: "root"
+
+    - name: Extract webapp on server
+      ansible.builtin.unarchive:
+        src: "/var/www/html/webapp.tgz"
+        remote_src: yes
+        dest: "/var/www/html/{{ project_name }}"
+        owner: "team"
+        group: "www-data"
+        mode: 0750
+      become: yes
+      become_user: "root"

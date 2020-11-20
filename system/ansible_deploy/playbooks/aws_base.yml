@@ -1,0 +1,107 @@
+---
+- name: Setup a fresh AWS Ubuntu 20 based server to have a system admin user with sudo and harden it
+
+  # Specify the hosts you want to target
+  hosts: all
+
+  # This playbook runs with the default root user that DigitalOcean or other VPS boot into
+  remote_user: ubuntu
+
+  vars:
+    system_user: team
+    system_packages: ["ufw", "screen"]
+
+  tasks:
+    - name: Add the system user
+      user:
+        name: "{{ system_user }}"
+        comment: System Admin
+        group: sudo
+        shell: /bin/bash
+      become: yes
+      become_user: root
+
+    - name: Set authorized keys from GitHub URLs
+      authorized_key:
+        user: "{{ system_user }}"
+        state: present
+        key: https://github.com/brainless.keys
+      become: yes
+      become_user: root
+
+    - name: Allow 'sudo' group to have passwordless sudo
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: "^%sudo"
+        line: "%sudo ALL=(ALL) NOPASSWD: ALL"
+        validate: "/usr/sbin/visudo -cf %s"
+      become: yes
+      become_user: root
+
+    - name: Harden sshd configuration
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "{{item.regexp}}"
+        line: "{{item.line}}"
+        state: present
+      with_items:
+        - regexp: "^#?PermitRootLogin"
+          line: "PermitRootLogin no"
+        - regexp: "^^#?PasswordAuthentication"
+          line: "PasswordAuthentication no"
+        - regexp: "^#?AllowAgentForwarding"
+          line: "AllowAgentForwarding yes"
+        - regexp: "^#?AllowTcpForwarding"
+          line: "AllowTcpForwarding no"
+        - regexp: "^#?MaxAuthTries"
+          line: "MaxAuthTries 2"
+        - regexp: "^#?MaxSessions"
+          line: "MaxSessions 2"
+        - regexp: "^#?TCPKeepAlive"
+          line: "TCPKeepAlive no"
+        - regexp: "^#?UseDNS"
+          line: "UseDNS no"
+      become: yes
+      become_user: root
+
+    - name: Update apt
+      apt: update_cache=yes
+      become: yes
+      become_user: root
+
+    - name: Install required system packages
+      apt: name={{ system_packages }} state=latest
+      become: yes
+      become_user: root
+
+    - name: UFW - Allow SSH connections
+      ufw:
+        rule: allow
+        name: OpenSSH
+      become: yes
+      become_user: root
+
+    - name: UFW - Deny all other incoming traffic by default
+      ufw:
+        state: enabled
+        policy: deny
+        direction: incoming
+      become: yes
+      become_user: root
+
+    - name: Restart sshd
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: sshd.service
+      become: yes
+      become_user: root
+
+    - name: Restart ufw
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: ufw.service
+      become: yes
+      become_user: root
