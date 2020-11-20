@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { sectionPadding, sectionMargin } from "components/styleDefaults";
-import { Hx } from "components/LayoutHelpers";
 
 export default () => {
   // const [state, setState] = useState({
@@ -17,7 +16,7 @@ export default () => {
     <div className={`w-full ${sectionPadding} ${sectionMargin} overflow-auto`}>
       <div className={`max-w-screen-sm mx-auto bg-white border rounded-lg`}>
         <div className="w-full p-4 border-gray-400 border-b">
-          <Hx size="2">Login to SolveX BnB</Hx>
+          <h3>Login to SolveX BnB</h3>
         </div>
 
         <div className="w-full p-4"></div>

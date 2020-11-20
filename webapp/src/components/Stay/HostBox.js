@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
 
-import { Section, Hx } from "components/LayoutHelpers";
-
 const host = {
   first_name: "Sarah",
   last_name: "Malor",
@@ -17,9 +15,9 @@ const host = {
 export default () => {
   return (
     <Fragment>
-      <Hx size="3">
+      <h3>
         {host.first_name} {host.last_name}
-      </Hx>
+      </h3>
       <img class="my-4 h-16 w-16 rounded-full mx-auto" src={host.img_src}></img>
 
       <p className="text-sm">{host.introduction}</p>

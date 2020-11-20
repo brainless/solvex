@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 
-import { Hx } from "components/LayoutHelpers";
 import {
   maxSectionWidth,
   sectionPadding,
@@ -32,9 +31,9 @@ export default () => {
         <div className={`${maxSectionWidth} mx-auto`}>
           <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
             <div className="col-span-5">
-              <Hx size="1">{stay.name}</Hx>
+              <h1>{stay.name}</h1>
 
-              <Hx size="2">Introduction</Hx>
+              <h2>Introduction</h2>
               <p className="py-1">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. In
@@ -57,12 +56,12 @@ export default () => {
 
               <hr className="border-gray-300 my-8" />
 
-              <Hx size="2">Facilities</Hx>
+              <h2>Facilities</h2>
               <FeaturesBox />
 
               <hr className="border-gray-300 my-8" />
 
-              <Hx size="2">Location</Hx>
+              <h2>Location</h2>
               <p className="py-1">
                 Sapien nec sagittis aliquam malesuada bibendum arcu vitae
                 elementum curabitur. Porta nibh venenatis cras sed felis eget
@@ -74,7 +73,7 @@ export default () => {
 
               <hr className="border-gray-300 my-8" />
 
-              <Hx size="2">Reviews</Hx>
+              <h2>Reviews</h2>
             </div>
 
             <div className="col-span-2">

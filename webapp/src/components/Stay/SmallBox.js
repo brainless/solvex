@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Hx } from "components/LayoutHelpers";
 import { featureLabelsEN } from "uiLabels/FeatureLabels";
 
 const StayType = ({ stayType }) => {
@@ -50,9 +49,9 @@ export default ({ stay }) => {
         </div>
 
         <div className="p-2">
-          <Hx size="5">
+          <h4>
             <Link to={`/stay/${stay.id}/slug-of-stay`}>{stay.name}</Link>
-          </Hx>
+          </h4>
 
           <div className="mt-2 space-x-1 space-y-1">
             <Features features={stay.features} />

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 
-import { Hx } from "components/LayoutHelpers";
 import {
   maxSectionWidth,
   sectionPadding,
@@ -60,7 +59,7 @@ const sampleStays = [
 const LatestStays = () => {
   return (
     <Fragment>
-      <Hx size="2">Our latest stays</Hx>
+      <h2>Our latest stays</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
         {sampleStays.map((stay, i) => (
@@ -74,7 +73,7 @@ const LatestStays = () => {
 const WeekDiscount = () => {
   return (
     <Fragment>
-      <Hx size="2">Discount on week stay</Hx>
+      <h2>Discount on week stay</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
         {sampleStays.slice(0, 3).map((stay, i) => (
@@ -91,9 +90,7 @@ export default () => {
       <div className="flex flex-col" style={{ height: "calc(100vh / 2)" }}>
         <div className="flex-grow" />
         <div className="max-w-screen-xl mx-auto">
-          <Hx size="1" isCentered>
-            Book an amazing getaway
-          </Hx>
+          <h1>Book an amazing getaway</h1>
           <SearchBox />
         </div>
         <div className="flex-grow" />

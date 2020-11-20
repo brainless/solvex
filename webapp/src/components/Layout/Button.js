@@ -1,22 +1,6 @@
 import React from "react";
 
-export const Hx = ({ size = "3", isCentered, children }) => {
-  const sizeClass = {
-    1: "text-4xl font-semibold text-gray-700",
-    2: "text-3xl font-semibold text-gray-700",
-    3: "text-xl font-bold text-gray-700",
-  };
-
-  return React.createElement(
-    `h${size}`,
-    {
-      className: `${sizeClass[size]} ${isCentered ? "text-center" : ""}`,
-    },
-    children
-  );
-};
-
-export const Button = ({
+export default ({
   label,
   fullWidth = false,
   size = "md",

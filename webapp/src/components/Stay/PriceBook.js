@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import { Button } from "components/LayoutHelpers";
+import Button from "components/Layout/Button";
 
 export default () => {
   return (
