@@ -1,0 +1,58 @@
+---
+- name: Setup PostgreSQL
+
+  # Specify the hosts you want to target
+  hosts: dbserver
+
+  remote_user: team
+
+  vars:
+    database_name: bnb_solvex
+    database_username: bnb_solvex
+    database_password: zWXFOMjaz7poMW2t
+
+  tasks:
+    - name: Update apt
+      become: yes
+      become_user: root
+      apt: update_cache=yes
+
+    - name: Install required system packages
+      become: yes
+      become_user: root
+      apt: name={{ item }} state=latest
+      loop: ["postgresql", "postgresql-contrib", "libpq-dev"]
+
+    - name: Enable PostgreSQL to start on boot
+      become: yes
+      become_user: root
+      systemd:
+        name: postgresql
+        enabled: yes
+
+    - name: Start PostgreSQL server
+      systemd:
+        name: postgresql
+        state: started
+
+    - name: Install psycopg2 with pip3
+      pip:
+        name: psycopg2-binary
+        executable: /usr/bin/pip3
+      become: true
+      become_user: root
+
+    - name: Create database
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: "{{ database_name }}"
+
+    - name: Create PostgreSQL user
+      postgresql_user:
+        db: "{{ database_name }}"
+        name: "{{ database_username }}"
+        password: "{{ database_password }}"
+        priv: "ALL/ALL"
+      become: true
+      become_user: postgres

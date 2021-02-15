@@ -1,0 +1,44 @@
+---
+- name: Setup pip3, virtualenv
+
+  # Specify the hosts you want to target
+  hosts: appserver
+
+  remote_user: team
+
+  vars:
+    system_packages:
+      [
+        "build-essential",
+        "libssl-dev",
+        "zlib1g-dev",
+        "libncurses5-dev",
+        "libnss3-dev",
+        "libncursesw5-dev",
+        "libreadline-dev",
+        "libsqlite3-dev",
+        "libgdbm-dev",
+        "libdb5.3-dev",
+        "libbz2-dev",
+        "libexpat1-dev",
+        "liblzma-dev",
+        "libffi-dev",
+        "python3-pip",
+        "gunicorn",
+      ]
+
+  tasks:
+    - name: Update apt
+      become: yes
+      become_user: root
+      apt: update_cache=yes
+
+    - name: Install required system packages
+      become: yes
+      become_user: root
+      apt: name={{ system_packages }} state=latest
+
+    - name: Install virtualenv with pip3
+      pip:
+        name: virtualenv
+        executable: /usr/bin/pip3

@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/solid.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/regular.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: #333333;
+  background-color: #f7fafc;
+}
+
+@layer components {
+  h1 {
+    @apply text-4xl font-bold leading-snug pt-3 pb-2 tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold leading-10 text-gray-800 pt-3 pb-2 tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl font-semibold leading-7 text-gray-800 pt-2 pb-1;
+  }
+
+  h4 {
+    @apply text-lg font-semibold leading-7 text-gray-800 pt-2 pb-1;
+  }
+
+  label {
+    @apply block text-sm font-medium leading-6 text-gray-700;
+  }
+
+  ul {
+    @apply list-disc pl-5;
+  }
+}
